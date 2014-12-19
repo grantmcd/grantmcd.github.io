@@ -5,10 +5,12 @@
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+      <link rel="stylesheet" href="styles/animate.min.css">
     </head>
     <body>
 
-      <div class="container">
+      <div id="hub" class="container">
         <div class="row">
           <div class="col-md-12">
             <div class="page-header">
@@ -19,6 +21,14 @@
       </div>
     </body>
     <script>
+
+
+    $(document).ready(function()
+  {
+    $('#hub').addClass('animated bounceOutLeft');
+  });
+
+  
     $('#header').click(function(){
       alert('Hi, this website is still in progress');
     });
