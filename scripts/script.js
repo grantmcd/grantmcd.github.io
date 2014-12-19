@@ -12,8 +12,8 @@ $( document ).ready(function() {
         enable_auto: true,
         distance: 60,
         color: '#FFF',
-        opacity: .5,
-        width: 5,
+        opacity: .6,
+        width: 4,
         condensed_mode: {
           enable: false,
           rotateX: 600,

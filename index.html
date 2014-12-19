@@ -27,6 +27,17 @@
             </div>
           </div>
         </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <div id="warning"class="alert alert-dismissable alert-warning">
+              <button type="button" class="close" onclick="dismissWarning();">×</button>
+              <h4>Welcome and a little warning!</h4>
+              <p>Thanks for stopping by my home on the web. This page is a work in progress so don't be surprised if there's some rough edges or missing content.
+              -Grant</a>.</p>
+            </div>
+          </div>
+        </div>
         <div id="hub" class="row">
           <div class="col-lg-4 col-md-6 col-sm-6">
             <div id="panel1">
@@ -77,6 +88,28 @@
               </div>
             </div>
           </div>
+          <div class="col-lg-4 col-md-6 col-sm-6">
+            <div id="panel2">
+              <div class="panel panel-default">
+                <div class="panel-body">
+                  <p>
+                    This website is made with a variety of libraries and frameworks I found exciting. Here's just a few of them:
+                  </p>
+                  <ul>
+                    <li>
+                      <a href="http://vincentgarreau.com/particles.js/">Particles.js</a>
+                    </li>
+                    <li>
+                      <a href="http://daneden.github.io/animate.css/">Animate.css</a>
+                    </li>
+                    <li>
+                      <a href="https://fezvrasta.github.io/bootstrap-material-design/">Material Design for Bootstrap</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </body>
@@ -92,6 +125,7 @@
     $(document).ready(function()
     {
       $.material.ripples()
+      $('#warning').addClass('animated fadeInRight');
       $('#header').addClass('animated fadeInDown');
       $('#hub').addClass('animated fadeInUp');
       $('#particles-js').addClass('animated fadeInDown');
@@ -104,6 +138,17 @@
 
 
     });
+
+    var dismissWarning = function()
+    {
+
+      $('#warning').removeClass('animated fadeInRight');
+      $('#warning').addClass('animated fadeOutLeft');
+
+      $('#warning').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){$('#warning').hide();});
+
+
+    };
 
 
     </script>
