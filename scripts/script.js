@@ -4,16 +4,16 @@ $( document ).ready(function() {
     particles: {
       color: '#FFF',
       shape: 'circle', // "circle", "edge" or "triangle"
-      opacity: .5,
-      size: 4,
+      opacity: .85,
+      size: 10,
       size_random: true,
-      nb: 150,
+      nb: 50,
       line_linked: {
         enable_auto: true,
-        distance: 100,
+        distance: 60,
         color: '#FFF',
         opacity: .5,
-        width: 1,
+        width: 5,
         condensed_mode: {
           enable: false,
           rotateX: 600,
