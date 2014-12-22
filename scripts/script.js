@@ -30,7 +30,7 @@ $( document ).ready(function() {
       mouse: {
         distance: 250
       },
-      detect_on: 'canvas', // "canvas" or "window"
+      detect_on: 'window', // "canvas" or "window"
       mode: 'grab',
       line_linked: {
         opacity: .5
