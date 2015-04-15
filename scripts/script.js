@@ -47,5 +47,4 @@ $( document ).ready(function() {
     retina_detect: true
   });
     
-    <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.4.0.min.js"></script>
 });
