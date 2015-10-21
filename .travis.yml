@@ -11,7 +11,7 @@ before_script:
 script: bash ./deploy.sh
 env:
   global:
-  - GH_REF: github.com/<your name>/<your repo>.git
+  - GH_REF: github.com/grantmcd/grantmcd.github.io.git
   - secure: "ZiWPQaIDq40zs9IVDzUnpasUwSWRZb69OaKZNq1yNAnHqsij3pV6q+B7/Gzx0vGfRUd1i
 ObPgHM5NyFkNUxBOJue4T+M9PkhBG5JKx8fUwXRfn8HnNXw7ezto4eJo+9ZmsnP4+ELkOsFyYHUj3f9z
 gapKqZ6t1O5QHLVuSkpFbazdMpGfGEvz5HIwYo0O5Xug2qGH3LHAN6y5+Sgs516NbrZ2/rdpWIJeh6Mp
