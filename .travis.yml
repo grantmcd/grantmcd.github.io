@@ -1,0 +1,23 @@
+sudo: false
+language: node_js
+node_js:
+  - 'iojs'
+  - '0.12'
+  - '0.10'
+before_script:
+  - 'npm install -g bower grunt-cli'
+  - 'bower install'
+
+script: bash ./deploy.sh
+env:
+  global:
+  - GH_REF: github.com/<your name>/<your repo>.git
+  - secure: "ZiWPQaIDq40zs9IVDzUnpasUwSWRZb69OaKZNq1yNAnHqsij3pV6q+B7/Gzx0vGfRUd1i
+ObPgHM5NyFkNUxBOJue4T+M9PkhBG5JKx8fUwXRfn8HnNXw7ezto4eJo+9ZmsnP4+ELkOsFyYHUj3f9z
+gapKqZ6t1O5QHLVuSkpFbazdMpGfGEvz5HIwYo0O5Xug2qGH3LHAN6y5+Sgs516NbrZ2/rdpWIJeh6Mp
+qz8c1TD6ewd7NQyXvOJYA3ZngxI9uApUt5inA2llTrDpBjGkCxDkQn2LnZDbAl6v0MWfDY3n0DJsBWvR
+m4huHqJioZQuGV62SBy5ie/Cntf9Q0PKrcJymksyUme2LQ4OqstLBubZ2UfW5trKh5TkoGdPBL5N7NvE
+xXlyb9MCg8L5gpoPGjWLn0ZSw54mq0b8RCiFMEceQL8C7+9/OH06d+4LGiTSMO280E+v9L8jJDzrfyFW
+KtEXZTi9qHywwDvwjZ9ls/mkZK87qnWOJUXfvQ3SN1YLo1n9IEIwmfKucFFtG+lJosQUR91fCSog80Lq
+VTW7W1ye2kvKiI9JZGnysu2ClgK5OcnwOXbb3jDVv53VmhaLQfnL+qUyHMPW5hK87MN3cFxDiXBkTdUk
+aoNKtCLzl6ppkKcr04+yKuu7TwrBSSWfa1/lm4906lPjGVnwx0hhX4="
