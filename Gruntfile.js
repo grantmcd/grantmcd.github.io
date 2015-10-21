@@ -409,9 +409,7 @@ module.exports = function(grunt) {
           cwd: '.',
           dest: '<%= yeoman.dist %>',
           src: [
-            'CNAME',
-            '.travis.yml',
-            '*.sh'
+            'CNAME'
           ]
         }, {
           expand: true,
