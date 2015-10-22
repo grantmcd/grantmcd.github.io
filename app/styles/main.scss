@@ -107,13 +107,12 @@ body {
     h1 {
       margin-top: 15px;
       margin-bottom: 15px;
-
       font-size: 125%;
       font-weight: bold;
     }
 
     button {
-      float: right;
+      float:right;
     }
   }
   li:last-child {
@@ -121,6 +120,7 @@ body {
   }
   li.selected-item {
     height: 225px;
+    overflow-y: scroll;
   }
   .unselected-item:hover {
     background-color: #03a9f4;

@@ -58,9 +58,10 @@
             <p>
               {{experiment.description}}
             </p>
-            <button ng-show="project.link != ''" type="button" class="btn-link" ng-click="openWindow(experiment.link)">{{experiment.linkText}}
+            <button ng-show="experiment.link != '' && chosenExperiment == experiment" type="button" class="btn-link" ng-click="openWindow(experiment.link)">{{experiment.linkText}}
               <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
             </button>
+            
           </li>
         </ul>
       </div>

@@ -44,7 +44,8 @@ angular.module('grantmcdApp')
         link: "https://github.com/grantmcd/grantmcd.github.io"
       }, ];
 
-      $scope.experiments = [{
+      $scope.experiments = [
+      {
         name: "Steam User Graph",
         description: "This simple app was made during the research phase of my senior design project. My goals when working on this app were to become familiar with Steam's public API as well as to use the Sigma.js library for displaying graphs in the canvas element. Because Steam's API does not allow CORS, you will need to disable security in your browser for the app to function.",
         linkText: "Web App",
