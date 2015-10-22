@@ -18,7 +18,8 @@
 </div>
 <div class="row socialBox">
   <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 socialButton" ng-repeat="contact in contacts">
-    <button class="" type="submit"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> {{contact.name}}</button>
+    <button class="" type="submit">
+      <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> {{contact.name}}</button>
   </div>
 </div>
 <div class="row sectionTitle">
@@ -33,17 +34,46 @@
         <dt>{{project.name}}</dt>
         <dd>{{project.description}}</dd>
       </dl>
-      <button ng-show="project.link != ''"type="button" class="btn-link">Github
+      <button ng-show="project.link != ''" type="button" class="btn-link" ng-click="openWindow(project.link)">{{project.linkText}}
         <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
       </button>
     </div>
   </div>
 </div>
-<div class="row sectionTitle">
-  <div class="col-xs-12">
-    <h1>Experiments</h1>
-    <p>
-      Coming soon...
-    </p>
+<div class="row">
+  <div class="col-md-6">
+    <div class="row sectionTitle">
+      <div class="col-xs-12">
+        <h1>Experiments</h1>
+        <p>
+          These are smaller, one-off apps or utilities I've built. More coming soon...
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <ul class="experiments-list">
+          <li ng-repeat="experiment in experiments" ng-class="chosenExperiment == experiment ? 'selected-item' : 'unselected-item' " ng-click="chooseExperiment(experiment)">
+            <h1>{{experiment.name}}</h1>
+            <p>
+              {{experiment.description}}
+            </p>
+            <button ng-show="project.link != ''" type="button" class="btn-link" ng-click="openWindow(experiment.link)">{{experiment.linkText}}
+              <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="row sectionTitle">
+      <div class="col-xs-12">
+        <h1>Other Stuff</h1>
+        <p>
+          My work not related to programming will show up here eventually.
+        </p>
+      </div>
+    </div>
   </div>
 </div>
