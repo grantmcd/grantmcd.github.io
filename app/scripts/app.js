@@ -24,6 +24,11 @@ angular
         controller: 'MainCtrl',
         controllerAs: 'main'
       })
+      .when('/updown', {
+        templateUrl: 'views/updown.html',
+        controller: 'UpdownCtrl',
+        controllerAs: 'updown'
+      })
       .otherwise({
         redirectTo: '/'
       });
