@@ -55,7 +55,7 @@ angular.module('grantmcdApp')
       $scope.chosenExperiment = $scope.experiments[0];
 
       $scope.bioText = "<b>Hello!</b> Welcome to my little corner of the web. I'm currently in my senior year studying Software Engineering at Iowa State University. At the moment, most of my work has been with web development on a variety of projects. Feel free to check out some of my git repos below. If you have any questions or just want to say hi, <a href='mailto:grantmcd@outlook.com'>shoot me an email</a>.";
-      $scope.subTitleText = "Software Developer, Designer, Student";
+      $scope.subTitleText = "Software Developer, Web Designer, Student";
 
       $scope.chooseExperiment = function(experiment) {
         if (experiment == $scope.chosenExperiment)
