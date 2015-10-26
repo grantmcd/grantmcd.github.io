@@ -17,6 +17,7 @@ angular.module('grantmcdApp')
       $scope.addedTaskIds = [];
       $scope.showError = false;
       $scope.errorMessage = "";
+      $scope.addedTaskIds = [];
 
       $scope.addTask = function() {
         $scope.showError = false;
@@ -64,12 +65,29 @@ angular.module('grantmcdApp')
 
         for (var i = 0; i < tokens.length; i++) {
           if (i == 0)
+          {
             newTaskId = tokens[i].trim();
+            if ($scope.addedTaskIds.indexOf(newTaskId) > -1) {
+              $scope.showError = true;
+              $scope.errorMessage = "Task ID must be unique.";
+              return -1;
+            }
+            $scope.$apply(function(){
+              $scope.addedTaskIds.push(newTaskId);
+            });
+          }
+
           else if (i == 1)
             newTaskDuration = parseInt(tokens[i]);
           else if (i == 2) {
             var dependencyIds = tokens[i].split(",");
             for (var j = 0; j < dependencyIds.length; j++) {
+              if($scope.addedTaskIds.indexOf(dependencyIds[j].trim()) < 0)
+                {
+                  $scope.showError = true;
+                  $scope.errorMessage = "Check your input file. Tasks must be created before they can be set as dependencies. ";
+                  return -1;
+                }
               newTaskDependencies.push(dependencyIds[j].trim());
               for (var k = 0; k < $scope.tasks.length; k++) {
                 if ($scope.tasks[k].id.trim() == dependencyIds[j].trim()) {
@@ -78,16 +96,7 @@ angular.module('grantmcdApp')
               }
             }
           }
-
         }
-
-        if ($scope.addedTaskIds.indexOf(newTaskId) > -1) {
-          $scope.showError = true;
-          $scope.errorMessage = "Task ID must be unique.";
-          return -1;
-        }
-
-        $scope.addedTaskIds.push($scope.newTaskId);
         if (newTaskId != "" && newTaskDuration > 0) {
           var newTask = {
             id: newTaskId,
@@ -102,6 +111,7 @@ angular.module('grantmcdApp')
           };
           $scope.$apply(function() {
             $scope.tasks.push(newTask);
+            return 0
           });
 
         }
@@ -202,8 +212,6 @@ angular.module('grantmcdApp')
 
 
       $scope.clearTasks = function() {
-        $scope.showError = false;
-        $scope.errorMessage = "";
         $scope.calculatedPath = false;
         $scope.tasks = new Array();
         $scope.currentDependencies = [];
@@ -214,6 +222,8 @@ angular.module('grantmcdApp')
       $scope.inputtedFile = false;
       $scope.uploadFileInput = function(evt) {
         $scope.$apply(function() {
+          $scope.showError = false;
+          $scope.errorMessage = "";
           $scope.clearTasks();
         });
 
@@ -228,7 +238,16 @@ angular.module('grantmcdApp')
               var fileText = r.result;
               var lines = fileText.split(/[\r\n]+/g); // tolerate both Windows and Unix linebreaks
               for (var i = 0; i < lines.length; i++) {
-                $scope.addTaskFromFile(lines[i]);
+                var result = $scope.addTaskFromFile(lines[i]);
+                if(result == -1)
+                {
+                  $scope.$apply(function() {
+                    $scope.inputtedFile = true;
+                    $scope.clearTasks();
+                  });
+                  return -1;
+                }
+
               }
               $scope.$apply(function() {
                 $scope.inputtedFile = true;
