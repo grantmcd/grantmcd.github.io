@@ -1,0 +1,152 @@
+<div class="page-header">
+  <h1>329 - Assignment 4
+    <small>Grant McDonald, Tristan Walter, Matt White</small>
+  </h1>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="alert alert-warning" role="alert" ng-show="showError">
+      <span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span> {{errorMessage}}</div>
+  </div>
+  <div class="col-md-6">
+    <h2>
+      Enter a Task
+    </h2>
+    <p>
+      Or upload a text file with properly formatted inputs.
+    </p>
+    <form ng-submit="addTask()">
+      <div class="form-group">
+        <label for="inputTaskId">Task ID</label>
+        <input type="text" class="form-control" id="inputTaskId" required="true" placeholder="Task ID - can be any string." ng-model="newTaskId">
+      </div>
+      <div class="form-group">
+        <label for="inputDuration">Duration (weeks)</label>
+        <input type="number" class="form-control" min="1" ; required="true" id="inputDuration" ng-model="newTaskDuration">
+      </div>
+      <div class="form-group">
+        <label>Dependencies</label>
+        <div class="alert alert-warning" role="alert" ng-show="tasks.length == 0">No tasks have been created yet to set as dependencies.</div>
+        <div class="checkbox" ng-repeat="task in tasks">
+          <label>
+            <input type="checkbox" ng-model="currentDependencies[task.id]"> {{task.id}}
+          </label>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-success">Add Task</button>
+      <button class="btn btn-danger pull-right" type="button" ng-click="clearTasks()">Clear Tasks</button>
+    </form>
+    <div class="row">
+      <div class="col-md-12">
+        <span class="btn btn-primary btn-lg btn-file btn-block" ng-disabled="inputtedFile">
+          <span class="glyphicon glyphicon-file" aria-hidden="true"></span> {{!inputtedFile ? "Upload Input File" : "Refresh Page to Upload a New Input File"}}
+          <input type="file" id="fileinput" onchange="angular.element(this).scope().uploadFileInput(event)" ng-disabled="inputtedFile">
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <h2>
+      Added Tasks
+    </h2>
+    <div class="alert alert-info" role="alert" ng-show="tasks.length == 0">No tasks have been added yet.</div>
+    <div class="list-group">
+      <li class="list-group-item" ng-repeat="task in tasks">
+        <b>ID: </b>{{task.id}} <b>Duration: </b>{{task.duration}} Weeks
+        <span ng-show="task.dependencies.length != 0">
+          <br>
+          <b>Dependencies: </b>
+          <span ng-repeat="dependency in task.dependencies"> {{dependency}}</span>
+        </span>
+        <span ng-show="task.dependents.length != 0">
+          <br>
+          <b>Dependents: </b>
+          <span ng-repeat="dependent in task.dependents"> {{dependent}}</span>
+        </span>
+    </div>
+    <div class="row" ng-show="tasks.length!=0">
+      <div class="col-md-12">
+        <button class="btn btn-danger btn-block" type="button" ng-click="findPath(tasks)">Calcuate Path</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row" style="margin-top: 15px;" ng-show="calculatedPath">
+  <div class="col-md-8">
+    <h2>Schedule</h2>
+    <div class="panel panel-default">
+      <div class="table-responsive">
+
+
+        <table class="table table-striped">
+          <tr>
+            <th>
+              Task Id
+            </th>
+            <th>
+              Duration
+            </th>
+            <th>
+              Dependencies
+            </th>
+            <th>
+              Dependents
+            </th>
+            <th>
+              Early Start
+            </th>
+            <th>
+              Early Finish
+            </th>
+            <th>
+              Late Start
+            </th>
+            <th>
+              Late Finish
+            </th>
+          </tr>
+          <tr ng-repeat="task in tasks">
+            <td>
+              {{task.id}}
+            </td>
+            <td>
+              {{task.duration}} week(s)
+            </td>
+            <td>
+              <span ng-repeat="dependency in task.dependencies"> {{dependency}}</span>
+            </td>
+            <td>
+              <span ng-repeat="dependent in task.dependents"> {{dependent}}</span>
+            </td>
+            <td>
+              {{task.es}}
+            </td>
+            <td>
+              {{task.ef}}
+            </td>
+            <td>
+              {{task.ls}}
+            </td>
+            <td>
+              {{task.lf}}
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <h1>Critical Path(s)</h1>
+    <p>
+      <b>Critical Path Length: </b> {{longestFinalPath}} weeks
+    </p>
+    <ul>
+      <li ng-repeat="path in criticalPaths">
+        <span ng-repeat="task in path track by $index">{{task}}
+          <span ng-show="$index != path.length-1">-></span>
+        </span>
+      </li>
+    </ul>
+  </div>
+</div>

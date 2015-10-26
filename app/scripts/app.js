@@ -29,6 +29,11 @@ angular
         controller: 'UpdownCtrl',
         controllerAs: 'updown'
       })
+      .when('/329-assignment4', {
+        templateUrl: 'views/329-Assignment4.html',
+        controller: '329Assignment4',
+        controllerAs: '329Assignment4'
+      })
       .otherwise({
         redirectTo: '/'
       });
