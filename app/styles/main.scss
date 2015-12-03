@@ -18,6 +18,8 @@ html a {
   text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
 }
 body {
+  overflow-x: none;
+  width: 100vw;
   padding: 0;
   padding-bottom: 100px;
   padding-top: 10px;
