@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e # exit with nonzero exit code if anything fails
 
-grunt build
+grunt build --force
 
 # go to the out directory and create a *new* Git repo
 cd dist
