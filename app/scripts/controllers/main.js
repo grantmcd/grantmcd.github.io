@@ -43,11 +43,16 @@ angular.module('grantmcdApp')
         linkText: "GitHub",
         link: "https://github.com/grantmcd/steam-crawl"
       }, {
+        name: "Green Apartment Prototype",
+        description: "Worked with the Director of Sustainability for Iowa State University to gather requirements for a Green Apartment Application that will be created in a future senior design project. The purpose of the app is to allow a user to recreate the layout of their apartment along with any energy consuming items within. Tips and a score related to how environmentally friendly the user's apartment is would be displayed. This UI prototype served as a proof of concept for the final product. I built the apartment visualization component of the app using the <a href='http://fabricjs.com/'>Fabric.js</a> library for easy canvas manipulation.",
+        linkText: "Prototype",
+        link: "http://grantmcd.com/409-pages"
+      },{
         name: "Portfolio",
         description: "The site you're currently viewing is made with AngularJS and Bootstrap. One of my main goals with this most recent redesign was to learn how to use Travis CI to speed up the deployment process and to tinker with web typography.",
         linkText: "GitHub",
         link: "https://github.com/grantmcd/grantmcd.github.io"
-      }, ];
+      }];
 
       $scope.experiments = [{
         name: "Steam User Graph",
