@@ -34,6 +34,11 @@ angular
         controller: '329Assignment4',
         controllerAs: '329Assignment4'
       })
+      .when('/test', {
+        templateUrl: 'views/test.html',
+        controller: 'TestCtrl',
+        controllerAs: 'test'
+      })
       .otherwise({
         redirectTo: '/'
       });

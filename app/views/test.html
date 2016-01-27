@@ -1,5 +1,11 @@
-<div id="mainContainer">
-  <div class="container">
+<div id="testContainer" ng-class="finishedAnimation ? 'finishedAnimation' : ''">
+  <div class="container-fluid">
+    <div class="row">
+      <div id="voxelContainer" class="col-lg-12" style="" ng-class="finishedAnimation ? 'finishedAnimation' : 'runningAnimation'">
+      </div>
+    </div>
+  </div>
+  <div class="container"ng-class="finishedAnimation ? 'showText' : 'hideText'">
     <div class="row">
       <div class="col-xs-12">
         <div class="titleBox">
